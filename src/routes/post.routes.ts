@@ -4,7 +4,9 @@ import {
   deletePostHandler,
   getPostHandler,
   getPostsHandler,
+  resizePostImage,
   updatePostHandler,
+  uploadPostImage,
 } from '../controllers/post.controller';
 import { deserializeUser } from '../middleware/deserializeUser';
 import { requireUser } from '../middleware/requireUser';
@@ -21,7 +23,12 @@ const router = express.Router();
 router.use(deserializeUser, requireUser);
 router
   .route('/')
-  .post(validate(createPostSchema), createPostHandler)
+  .post(
+    uploadPostImage,
+    resizePostImage,
+    validate(createPostSchema),
+    createPostHandler
+  )
   .get(getPostsHandler);
 
 router
