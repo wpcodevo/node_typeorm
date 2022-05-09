@@ -1,6 +1,5 @@
 import config from 'config';
-import { omit } from 'lodash';
-import { excludedFields } from '../controllers/auth.controller';
+import { DeepPartial } from 'typeorm';
 import { User } from '../entities/user.entity';
 import { CreateUserInput } from '../schemas/user.schema';
 import redisClient from '../utils/connectRedis';
@@ -9,10 +8,8 @@ import { signJwt } from '../utils/jwt';
 
 const userRepository = AppDataSource.getRepository(User);
 
-export const createUser = async (input: CreateUserInput) => {
-  return (await AppDataSource.manager.save(
-    AppDataSource.manager.create(User, input)
-  )) as User;
+export const createUser = async (input: DeepPartial<User>) => {
+  return userRepository.save(userRepository.create(input));
 };
 
 export const findUserByEmail = async ({ email }: { email: string }) => {
@@ -28,7 +25,7 @@ export const findUser = async (query: Object) => {
 };
 export const signTokens = async (user: User) => {
   // 1. Create Session
-  redisClient.set(user.id, JSON.stringify(omit(user, excludedFields)), {
+  redisClient.set(user.id, JSON.stringify(user), {
     EX: config.get<number>('redisCacheExpiresIn') * 60,
   });
 

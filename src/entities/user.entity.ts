@@ -1,4 +1,3 @@
-import crypto from 'crypto';
 import { Entity, Column, Index, BeforeInsert } from 'typeorm';
 import bcrypt from 'bcryptjs';
 import Model from './model.entity';
@@ -39,13 +38,6 @@ export class User extends Model {
   })
   verified: boolean;
 
-  @Index('verificationCode_index')
-  @Column({
-    type: 'text',
-    nullable: true,
-  })
-  verificationCode!: string | null;
-
   @BeforeInsert()
   async hashPassword() {
     this.password = await bcrypt.hash(this.password, 12);
@@ -58,14 +50,7 @@ export class User extends Model {
     return await bcrypt.compare(candidatePassword, hashedPassword);
   }
 
-  static createVerificationCode() {
-    const verificationCode = crypto.randomBytes(32).toString('hex');
-
-    const hashedVerificationCode = crypto
-      .createHash('sha256')
-      .update(verificationCode)
-      .digest('hex');
-
-    return { verificationCode, hashedVerificationCode };
+  toJSON() {
+    return { ...this, password: undefined, verified: undefined };
   }
 }
