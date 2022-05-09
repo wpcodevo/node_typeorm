@@ -9,56 +9,6 @@ import {
 import { createPost, findPosts, getPost } from '../services/post.service';
 import { findUserById } from '../services/user.service';
 import AppError from '../utils/appError';
-import multer from 'multer';
-import sharp from 'sharp';
-
-const multerStorage = multer.memoryStorage();
-
-const multerFilter = (
-  req: Request,
-  file: Express.Multer.File,
-  cb: multer.FileFilterCallback
-) => {
-  if (!file.mimetype.startsWith('image')) {
-    return cb(new multer.MulterError('LIMIT_UNEXPECTED_FILE'));
-  }
-
-  cb(null, true);
-};
-
-const upload = multer({
-  storage: multerStorage,
-  fileFilter: multerFilter,
-  limits: { fileSize: 5000000, files: 1 },
-});
-
-export const uploadPostImage = upload.single('image');
-
-export const resizePostImage = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  try {
-    const file = req.file;
-    if (!file) return next();
-
-    const user = res.locals.user;
-
-    const fileName = `user-${user.id}-${Date.now()}.jpeg`;
-    await sharp(req.file?.buffer)
-      .resize(800, 450)
-      .toFormat('jpeg')
-      .jpeg({ quality: 90 })
-      .toFile(`${__dirname}/../../public/posts/${fileName}`);
-
-    req.body.image = fileName;
-
-    next();
-  } catch (err: any) {
-    next(err);
-  }
-};
 
 export const createPostHandler = async (
   req: Request<{}, {}, CreatePostInput>,
