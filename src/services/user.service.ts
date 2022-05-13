@@ -1,5 +1,4 @@
 import config from 'config';
-import { omit } from 'lodash';
 import { excludedFields } from '../controllers/auth.controller';
 import { User } from '../entities/user.entity';
 import { CreateUserInput } from '../schemas/user.schema';
@@ -28,7 +27,7 @@ export const findUser = async (query: Object) => {
 };
 export const signTokens = async (user: User) => {
   // 1. Create Session
-  redisClient.set(user.id, JSON.stringify(omit(user, excludedFields)), {
+  redisClient.set(user.id, JSON.stringify(user), {
     EX: config.get<number>('redisCacheExpiresIn') * 60,
   });
 

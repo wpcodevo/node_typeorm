@@ -1,5 +1,4 @@
 import { NextFunction, Request, Response } from 'express';
-import { omit } from 'lodash';
 import { excludedFields } from '../controllers/auth.controller';
 import { findUserById } from '../services/user.service';
 import AppError from '../utils/appError';
@@ -52,7 +51,7 @@ export const deserializeUser = async (
     }
 
     // Add user to res.locals
-    res.locals.user = omit(user, excludedFields);
+    res.locals.user = user;
 
     next();
   } catch (err: any) {

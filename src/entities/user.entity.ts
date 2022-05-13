@@ -68,4 +68,13 @@ export class User extends Model {
 
     return { verificationCode, hashedVerificationCode };
   }
+
+  toJSON() {
+    return {
+      ...this,
+      password: undefined,
+      verified: undefined,
+      verificationCode: undefined,
+    };
+  }
 }
