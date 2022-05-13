@@ -1,5 +1,4 @@
 import config from 'config';
-import { omit } from 'lodash';
 import { User } from '../entities/user.entity';
 import redisClient from '../utils/connectRedis';
 import { AppDataSource } from '../utils/data-source';

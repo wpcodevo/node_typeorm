@@ -1,5 +1,4 @@
 import { NextFunction, Request, Response } from 'express';
-import { omit } from 'lodash';
 import { findUserById } from '../services/user.service';
 import AppError from '../utils/appError';
 import redisClient from '../utils/connectRedis';

@@ -1,5 +1,4 @@
 import { NextFunction, Request, Response } from 'express';
-import { omit } from 'lodash';
 import {
   CreatePostInput,
   DeletePostInput,
