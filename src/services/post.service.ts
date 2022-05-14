@@ -2,8 +2,6 @@ import {
   FindOptionsRelations,
   FindOptionsSelect,
   FindOptionsWhere,
-  Relation,
-  RelationOptions,
 } from 'typeorm';
 import { Post } from '../entities/post.entity';
 import { User } from '../entities/user.entity';
@@ -22,7 +20,7 @@ export const getPost = async (postId: string) => {
 export const findPosts = async (
   where: FindOptionsWhere<Post> = {},
   select: FindOptionsSelect<Post> = {},
-  relations: FindOptionsRelations<Post> = {}
+  relations: FindOptionsRelations<Post>
 ) => {
   return await postRepository.find({
     where,
