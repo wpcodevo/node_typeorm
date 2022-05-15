@@ -4,9 +4,7 @@ import {
   deletePostHandler,
   getPostHandler,
   getPostsHandler,
-  resizePostImage,
   updatePostHandler,
-  uploadPostImage,
 } from '../controllers/post.controller';
 import { deserializeUser } from '../middleware/deserializeUser';
 import { requireUser } from '../middleware/requireUser';
@@ -17,24 +15,20 @@ import {
   getPostSchema,
   updatePostSchema,
 } from '../schemas/post.schema';
+import { uploadPostImageDisk } from '../upload/single-upload-disk';
 
 const router = express.Router();
 
 router.use(deserializeUser, requireUser);
 router
   .route('/')
-  .post(
-    uploadPostImage,
-    resizePostImage,
-    validate(createPostSchema),
-    createPostHandler
-  )
+  .post(uploadPostImageDisk, validate(createPostSchema), createPostHandler)
   .get(getPostsHandler);
 
 router
   .route('/:postId')
   .get(validate(getPostSchema), getPostHandler)
-  .patch(validate(updatePostSchema), updatePostHandler)
+  .patch(uploadPostImageDisk, updatePostHandler)
   .delete(validate(deletePostSchema), deletePostHandler);
 
 export default router;

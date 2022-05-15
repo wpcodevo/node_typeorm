@@ -7,7 +7,7 @@
     "start": "ts-node-dev --respawn --transpile-only --exit-child src/app.ts",
     "build": "tsc -p .",
     "typeorm": "typeorm-ts-node-commonjs",
-    "migrate": "rm -rf build && yarn build && yarn typeorm migration:generate ./src/migrations/added-user-entity -d ./src/utils/data-source.ts",
+    "migrate": "rm -rf build && yarn build && yarn typeorm migration:generate ./src/migrations/added-images-column -d ./src/utils/data-source.ts",
     "db:push": "rm -rf build && yarn build && yarn typeorm migration:run -d src/utils/data-source.ts"
   },
   "dependencies": {

@@ -17,6 +17,9 @@ export class Post extends Model {
   })
   image: string;
 
+  @Column({ type: 'simple-array' })
+  images: string[];
+
   @ManyToOne(() => User, (user) => user.posts)
   @JoinColumn()
   user: User;
