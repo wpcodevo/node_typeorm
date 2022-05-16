@@ -15,7 +15,15 @@ import {
   getPostSchema,
   updatePostSchema,
 } from '../schemas/post.schema';
+import {
+  resizePostImages,
+  uploadPostImages,
+} from '../upload/multi-upload-sharp';
 import { uploadPostImageDisk } from '../upload/single-upload-disk';
+import {
+  resizePostImage,
+  uploadPostImage,
+} from '../upload/single-upload-sharp';
 
 const router = express.Router();
 
@@ -28,7 +36,7 @@ router
 router
   .route('/:postId')
   .get(validate(getPostSchema), getPostHandler)
-  .patch(uploadPostImageDisk, updatePostHandler)
+  .patch(uploadPostImageDisk, validate(updatePostSchema), updatePostHandler)
   .delete(validate(deletePostSchema), deletePostHandler);
 
 export default router;

@@ -20,7 +20,7 @@ const multerFilter = (
 const upload = multer({
   storage: multerStorage,
   fileFilter: multerFilter,
-  limits: { fileSize: 5000000, files: 1 },
+  limits: { fileSize: 5 * 1024 * 1024, files: 1 },
 });
 
 export const uploadPostImage = upload.single('image');
@@ -42,6 +42,7 @@ export const resizePostImage = async (
       .toFile(`${__dirname}/../../public/posts/single/${fileName}`);
 
     req.body.image = fileName;
+    req.body.images = [];
 
     next();
   } catch (err: any) {

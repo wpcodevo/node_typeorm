@@ -10,7 +10,6 @@ const multerFilter = (
   file: Express.Multer.File,
   cb: FileFilterCallback
 ) => {
-  console.log(file);
   if (!file.mimetype.startsWith('image')) {
     return cb(new multer.MulterError('LIMIT_UNEXPECTED_FILE'));
   }
@@ -20,7 +19,7 @@ const multerFilter = (
 const upload = multer({
   storage: multerStorage,
   fileFilter: multerFilter,
-  limits: { fileSize: 5000000 },
+  limits: { fileSize: 5 * 1024 * 1024 },
 });
 
 export const uploadPostImages = upload.fields([
@@ -40,14 +39,13 @@ export const resizePostImages = async (
     // @ts-ignore
     if (req.files?.image) {
       const filename = `post-${uuid()}-${Date.now()}.jpeg`;
+      req.body.image = filename;
       // @ts-ignore
       await sharp(req.files?.image[0]?.buffer)
         .resize(800, 450)
         .toFormat('jpeg')
         .jpeg({ quality: 90 })
         .toFile(filename);
-
-      req.body.image = filename;
     }
 
     // resize images

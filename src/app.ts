@@ -65,7 +65,6 @@ AppDataSource.initialize()
     // GLOBAL ERROR HANDLER
     app.use(
       (error: AppError, req: Request, res: Response, next: NextFunction) => {
-        console.log(error);
         error.status = error.status || 'error';
         error.statusCode = error.statusCode || 500;
 
