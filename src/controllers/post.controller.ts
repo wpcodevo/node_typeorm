@@ -65,11 +65,11 @@ export const getPostsHandler = async (
   next: NextFunction
 ) => {
   try {
-    console.log(res.locals.user.id);
-    const posts = await findPosts({}, {}, {});
+    const posts = await findPosts(req);
 
     res.status(200).json({
       status: 'success',
+      results: posts.length,
       data: {
         posts,
       },

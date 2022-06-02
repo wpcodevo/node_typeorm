@@ -1,8 +1,4 @@
-import {
-  FindOptionsRelations,
-  FindOptionsSelect,
-  FindOptionsWhere,
-} from 'typeorm';
+import { Request } from 'express';
 import { Post } from '../entities/post.entity';
 import { User } from '../entities/user.entity';
 import { AppDataSource } from '../utils/data-source';
@@ -17,14 +13,19 @@ export const getPost = async (postId: string) => {
   return await postRepository.findOneBy({ id: postId });
 };
 
-export const findPosts = async (
-  where: FindOptionsWhere<Post> = {},
-  select: FindOptionsSelect<Post> = {},
-  relations: FindOptionsRelations<Post>
-) => {
-  return await postRepository.find({
-    where,
-    select,
-    relations,
-  });
+export const findPosts = async (req: Request) => {
+  const builder = postRepository.createQueryBuilder('post');
+
+  if (req.query.search) {
+    builder.where('post.title LIKE :search OR post.content LIKE :search', {
+      search: `%${req.query.search}%`,
+    });
+  }
+
+  if (req.query.sort) {
+    const sortQuery = req.query.sort === '-price' ? 'DESC' : 'ASC';
+    builder.orderBy('post.title', sortQuery);
+  }
+
+  return await builder.getMany();
 };

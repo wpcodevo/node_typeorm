@@ -19,5 +19,5 @@ export class Post extends Model {
 
   @ManyToOne(() => User, (user) => user.posts)
   @JoinColumn()
-  user: User;
+  user!: User;
 }

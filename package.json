@@ -8,7 +8,8 @@
     "build": "tsc -p .",
     "typeorm": "typeorm-ts-node-commonjs",
     "migrate": "rm -rf build && yarn build && yarn typeorm migration:generate ./src/migrations/added-user-entity -d ./src/utils/data-source.ts",
-    "db:push": "rm -rf build && yarn build && yarn typeorm migration:run -d src/utils/data-source.ts"
+    "db:push": "rm -rf build && yarn build && yarn typeorm migration:run -d src/utils/data-source.ts",
+    "importData": "npx ts-node-dev --transpile-only --exit-child  src/data/seeder.ts"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -30,6 +31,7 @@
     "zod": "^3.14.4"
   },
   "devDependencies": {
+    "@faker-js/faker": "^6.3.1",
     "@types/bcryptjs": "^2.4.2",
     "@types/config": "^0.0.41",
     "@types/cookie-parser": "^1.4.3",
