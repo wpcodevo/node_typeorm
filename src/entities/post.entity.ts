@@ -12,13 +12,13 @@ export class Post extends Model {
   @Column()
   content: string;
 
+  @Column()
+  category: string;
+
   @Column({
     default: 'default-post.png',
   })
   image: string;
-
-  @Column({ type: 'simple-array' })
-  images: string[];
 
   @ManyToOne(() => User, (user) => user.posts)
   @JoinColumn()

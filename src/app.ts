@@ -1,4 +1,5 @@
 require('dotenv').config();
+import path from 'path';
 import express, { NextFunction, Request, Response } from 'express';
 import config from 'config';
 import morgan from 'morgan';
@@ -24,6 +25,7 @@ AppDataSource.initialize()
     app.set('views', `${__dirname}/views`);
 
     // MIDDLEWARE
+    app.use('/api/static', express.static(path.join(__dirname, '../public')));
 
     // 1. Body parser
     app.use(express.json({ limit: '10kb' }));

@@ -90,6 +90,7 @@ export const registerUserHandler = async (
         message: 'User with that email already exist',
       });
     }
+    console.log(err);
     next(err);
   }
 };

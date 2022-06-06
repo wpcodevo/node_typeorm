@@ -1,5 +1,4 @@
 import { NextFunction, Request, Response } from 'express';
-import { omit } from 'lodash';
 import {
   CreatePostInput,
   DeletePostInput,
@@ -66,7 +65,7 @@ export const getPostsHandler = async (
   next: NextFunction
 ) => {
   try {
-    const posts = await findPosts({}, {}, {});
+    const posts = await findPosts({}, {}, { user: true });
 
     res.status(200).json({
       status: 'success',
@@ -124,6 +123,25 @@ export const deletePostHandler = async (
       status: 'success',
       data: null,
     });
+  } catch (err: any) {
+    next(err);
+  }
+};
+
+export const parsePostFormData = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    if (!req.body.data) return next();
+    const parsedBody = { ...JSON.parse(req.body.data) };
+    if (req.body.image) {
+      parsedBody['image'] = req.body.image;
+    }
+
+    req.body = parsedBody;
+    next();
   } catch (err: any) {
     next(err);
   }

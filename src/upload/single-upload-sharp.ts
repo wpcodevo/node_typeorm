@@ -39,10 +39,9 @@ export const resizePostImage = async (
       .resize(800, 450)
       .toFormat('jpeg')
       .jpeg({ quality: 90 })
-      .toFile(`${__dirname}/../../public/posts/single/${fileName}`);
+      .toFile(`${__dirname}/../../public/posts/${fileName}`);
 
     req.body.image = fileName;
-    req.body.images = [];
 
     next();
   } catch (err: any) {
