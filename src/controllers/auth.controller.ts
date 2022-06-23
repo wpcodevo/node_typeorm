@@ -75,6 +75,7 @@ export const registerUserHandler = async (
           'An email with a verification code has been sent to your email',
       });
     } catch (error) {
+      console.log(error);
       newUser.verificationCode = null;
       await newUser.save();
 
