@@ -1,4 +1,28 @@
-# Node.js, Express, TypeORM, PostgreSQL: CRUD Rest API
+# API with Node.js + PostgreSQL + TypeORM: Send Emails
+
+![API with Node.js + PostgreSQL + TypeORM: Send Emails](https://codevoweb.com/wp-content/uploads/2022/05/API-with-Node.js-PostgreSQL-TypeORM-Send-Emails.webp)
+
+In this article, you'll learn how to send development and production-ready emails with Nodemailer, Node.js, PostgreSQL, and TypeORM. We will include the Email verification feature in the API to ensure the users provide valid email addresses during the account registration process.
+
+## Topics Covered
+
+- Setting up Express.js with Pug Templating Engine
+- Create a Utility Class to Send Emails
+    - Require the Nodemailer Credentials
+    - Define the Email Class Attributes
+    - Create a Nodemailer Transporter
+    - Create a Method to Generate the Email Templates
+    - Create a Method to Send the Emails
+- Creating the Email Templates with Pug
+- Create the User Entity with TypeORM
+- Database Schema Migration with TypeORM
+- Update the User Register Controller
+- Add a Controller to Verify the Email
+- Update the Login Controller
+
+Read the entire article here: [https://codevoweb.com/api-node-postgresql-typeorm-send-emails](https://codevoweb.com/api-node-postgresql-typeorm-send-emails)
+
+Articles in this series:
 
 ### 1. API with Node.js + PostgreSQL + TypeORM: Project Setup
 
