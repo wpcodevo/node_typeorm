@@ -1,8 +1,8 @@
 # API with Node.js + PostgreSQL + TypeORM: Project Setup
 
-![API with Node.js + PostgreSQL + TypeORM: Project Setup](https://codevoweb.com/wp-content/uploads/2022/05/API-with-Node.js-PostgreSQL-TypeORM-Project-Setup.webp)
-
 In this article, you'll learn how to set up a Node.js project with TypeScript, ExpressJs, PostgreSQL, TypeORM, and Redis. Also, you will learn how to run Postgres and Redis servers with Docker.
+
+![API with Node.js + PostgreSQL + TypeORM: Project Setup](https://codevoweb.com/wp-content/uploads/2022/05/API-with-Node.js-PostgreSQL-TypeORM-Project-Setup.webp)
 
 ## Topics Covered
 
