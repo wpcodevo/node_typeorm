@@ -1,8 +1,8 @@
 # Node.js and PostgreSQL: Upload and Resize Multiple Images
 
-![Node.js and PostgreSQL: Upload and Resize Multiple Images](https://codevoweb.com/wp-content/uploads/2022/05/Node.js-and-PostgreSQL-Upload-and-Resize-Multiple-Images.webp)
-
 In this article, you'll learn how to upload and resize single and multiple images with Node.js, TypeScript, Multer, and Sharp. The Node.js API will run on an Express.js HTTP server and use PostgreSQL database.
+
+![Node.js and PostgreSQL: Upload and Resize Multiple Images](https://codevoweb.com/wp-content/uploads/2022/05/Node.js-and-PostgreSQL-Upload-and-Resize-Multiple-Images.webp)
 
 ## Topics Covered
 
