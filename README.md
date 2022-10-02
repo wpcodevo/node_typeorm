@@ -1,8 +1,8 @@
 # API with Node.js + PostgreSQL + TypeORM: Send Emails
 
-![API with Node.js + PostgreSQL + TypeORM: Send Emails](https://codevoweb.com/wp-content/uploads/2022/05/API-with-Node.js-PostgreSQL-TypeORM-Send-Emails.webp)
-
 In this article, you'll learn how to send development and production-ready emails with Nodemailer, Node.js, PostgreSQL, and TypeORM. We will include the Email verification feature in the API to ensure the users provide valid email addresses during the account registration process.
+
+![API with Node.js + PostgreSQL + TypeORM: Send Emails](https://codevoweb.com/wp-content/uploads/2022/05/API-with-Node.js-PostgreSQL-TypeORM-Send-Emails.webp)
 
 ## Topics Covered
 
