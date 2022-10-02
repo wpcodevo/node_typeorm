@@ -1,8 +1,8 @@
 # Node.js, Express, TypeORM, PostgreSQL: CRUD Rest API
 
-![Node.js, Express, TypeORM, PostgreSQL: CRUD Rest API](https://codevoweb.com/wp-content/uploads/2022/05/Node.js-Express-TypeORM-PostgreSQL-CRUD-Rest-API.webp)
-
 In this article, you'll learn how to build CRUD RESTful API with Node.js, ExpressJs, TypeORM, and PostgreSQL. We will define the database schema with TypeORM and run the migration command to push the TypeORM schema to the database. Next, we will create higher-level CRUD function to perform the CRUD operations.
+
+![Node.js, Express, TypeORM, PostgreSQL: CRUD Rest API](https://codevoweb.com/wp-content/uploads/2022/05/Node.js-Express-TypeORM-PostgreSQL-CRUD-Rest-API.webp)
 
 ## Topics Covered
 
