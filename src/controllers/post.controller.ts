@@ -119,6 +119,7 @@ export const getPostsHandler = async (
 
     res.status(200).json({
       status: 'success',
+      results: posts.length,
       data: {
         posts,
       },
