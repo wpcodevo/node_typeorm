@@ -45,7 +45,7 @@ export const resizePostImages = async (
         .resize(800, 450)
         .toFormat('jpeg')
         .jpeg({ quality: 90 })
-        .toFile(filename);
+        .toFile(`${__dirname}/../../public/posts/single/${filename}`);
     }
 
     // resize images
