@@ -13,8 +13,13 @@ import validateEnv from './utils/validateEnv';
 import cluster from 'cluster';
 import os from 'os';
 
-const numCpus = os.cpus().length;
+// import nodemailer from 'nodemailer';
+// (async function () {
+//   const credentials = await nodemailer.createTestAccount();
+//   console.log(credentials);
+// })();
 
+const numCpus = os.cpus().length;
 AppDataSource.initialize()
   .then(async () => {
     // VALIDATE ENV
