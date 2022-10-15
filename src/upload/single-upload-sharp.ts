@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import multer from 'multer';
 import sharp from 'sharp';
-import uuid from '../utils/uuid';
+import uuid from '../uuid';
 
 const multerStorage = multer.memoryStorage();
 
@@ -39,7 +39,7 @@ export const resizePostImage = async (
       .resize(800, 450)
       .toFormat('jpeg')
       .jpeg({ quality: 90 })
-      .toFile(`${__dirname}/../../public/posts/${fileName}`);
+      .toFile(`${__dirname}/../../public/posts/single/${fileName}`);
 
     req.body.image = fileName;
 

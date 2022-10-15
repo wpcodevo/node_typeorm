@@ -1,6 +1,6 @@
 import { Request } from 'express';
 import multer from 'multer';
-import uuid from '../utils/uuid';
+import uuid from '../uuid';
 
 const multerStorage = multer.diskStorage({
   destination: function (req: Request, file: Express.Multer.File, cb) {

@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import multer, { FileFilterCallback } from 'multer';
 import sharp from 'sharp';
-import uuid from '../utils/uuid';
+import uuid from '../uuid';
 
 const multerStorage = multer.memoryStorage();
 
@@ -19,7 +19,7 @@ const multerFilter = (
 const upload = multer({
   storage: multerStorage,
   fileFilter: multerFilter,
-  limits: { fileSize: 5 * 1024 * 1024 },
+  limits: { fileSize: 10 * 1024 * 1024 },
 });
 
 export const uploadPostImages = upload.fields([
